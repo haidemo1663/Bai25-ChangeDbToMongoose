@@ -1,0 +1,18 @@
+form(action='/books' method='GET')
+  input(type='text' name='q' value='')
+  button Search
+button
+  a(href='/books/create') New
+ul 
+  each val in books
+    li= val.title
+      span &nbsp
+        a(href='/books/'+ val.id) View
+      span &nbsp
+        a(href='/books/'+val.id+'/update') Update  
+
+      span &nbsp
+        a(href='/books/'+val.id+'/delete') Xoa  
+
+
+script document.querySelector("input").setAttribute("value",`#{keyword}`);
