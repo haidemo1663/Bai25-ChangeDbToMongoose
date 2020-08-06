@@ -1,0 +1,17 @@
+form(action='/trans/create' method='POST')
+    lable 
+        b User Name
+    br
+    select(name='userid' style="width: 300px;height: 30px")
+        each user in users
+         option(value=user.id) #{user.name}
+    br
+    lable 
+        b Book Name
+    br
+    select(name='bookid' style="width: 300px;height: 30px")
+        each book in books
+         option(value=book.id) #{book.title}
+    br
+    br
+    input(type="submit" value='Create')

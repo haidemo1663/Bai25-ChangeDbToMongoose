@@ -5,7 +5,8 @@ const db=require('./db');
 const books=db.get('books');
 const app = express();
 
-const routeUser=require('./routes/users.route')
+const routeUser=require('./routes/users.route');
+const routeTrans=require('./routes/transactions.route');
 app.set("view engine", "pug");
 app.set("views", "./views");
 
@@ -65,6 +66,7 @@ app.post("/books/:id/update", (req, res) => {
 });
 
 app.use('/users',routeUser);
+app.use('/trans',routeTrans);
 app.listen(3000, () => {
   console.log("Day la port : " + 3000);
 });
