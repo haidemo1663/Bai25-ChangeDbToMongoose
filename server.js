@@ -1,15 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const shortId = require("shortid");
-const lowdb = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
-
-const adapter = new FileSync("db.json");
-const db = lowdb(adapter);
-const books = db.get("books");
-db.defaults({ books: [] ,users:[]}).write();
-
+const db=require('./db');
+const books=db.get('books');
 const app = express();
+
+const routeUser=require('./routes/users.route')
 app.set("view engine", "pug");
 app.set("views", "./views");
 
@@ -53,9 +49,6 @@ app.get("/books/:id/delete", (req, res) => {
   books.remove({ id: id }).write();
   res.redirect("/books");
 });
-app.listen(3000, () => {
-  console.log("Day la port : " + 3000);
-});
 app.get("/books/:id/update", (req, res) => {
   var id = req.params.id;
 
@@ -71,40 +64,7 @@ app.post("/books/:id/update", (req, res) => {
   res.redirect("/books");
 });
 
-const users=db.get('users');
-app.get('/users',(req,res)=>{
-    res.render('users/index',{users:users.value()});
-})
-app.get('/users/create',(req,res)=>{
-  res.render('users/create',{users:users.value()});
+app.use('/users',routeUser);
+app.listen(3000, () => {
+  console.log("Day la port : " + 3000);
 });
-app.post('/users/create',(req,res)=>{
-  var userName={};
-  userName.id=shortId.generate();
-  userName.name=req.body.name;
-  console.log(userName);
-  users.push(userName).write();
-  res.redirect('/users');
-});
-app.get('/users/:id',(req,res)=>{
-  var id=req.params.id;
-  var user=users.find({id:id}).value();
-  console.log(user);
-  res.render('users/view',{users:user});
-});
-app.get('/users/:id/update',(req,res)=>{
-  var id=req.params.id;
-  var user=users.find({id:id}).value();
-  res.render('users/update',{users:user,id:id});
-});
-app.post('/users/:id/update',(req,res)=>{
-  var id=req.body.id;
-  var name=req.body.name;
-  users.find({id:id}).assign({name:name}).write();
-  res.redirect('/users');
-});
-app.get('/users/:id/delete',(req,res)=>{
-  var id=req.params.id;
-  users.remove({id:id}).write();
-  res.redirect('/users');
-})
