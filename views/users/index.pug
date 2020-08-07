@@ -1,7 +1,7 @@
 form(action='/users' method='GET')
   lable Name
   br
-  input(type='text' name='name' value='')
+  input(type='text' name='name' value=keyword)
   br
   br
   button Search
@@ -16,4 +16,3 @@ ul
           a(href='/users/'+user.id+'/update') Update
           span &nbsp
           a(href='/users/'+user.id+'/delete') Xoa  
-script document.querySelector("input").setAttribute("value",`#{keyword}`);

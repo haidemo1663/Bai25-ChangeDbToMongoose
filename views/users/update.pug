@@ -1,12 +1,11 @@
 form(action='/users/:id/update' method='POST')
   lable ID
   br
-  input( type='text' name='id' value='')
+  input( type='text' name='id' value=users.id)
   br
   lable Name
   br
-  input(type='text' name='name' value='')
+  input(type='text' name='name' value=users.name)
   br
   br
   button Save
-  script document.querySelector("input").setAttribute("value",`#{id}`);
