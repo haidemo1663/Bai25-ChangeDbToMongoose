@@ -1,18 +1,14 @@
-const express = require("express");
-const bodyParser = require("body-parser");
 const shortId = require("shortid");
 const db=require('../db');
 const users=db.get('users');
 module.exports.index=(req,res)=>{
     var q = req.query.name;
-    console.log(q);
     if (!q) {
       res.render("users/index", { users: users.value() });
     } else {
       var matchUser = users.filter(user => {
         return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
       });
-      console.log(matchUser.value());
       res.render("users/index", { users: matchUser.value(), keyword: q });
     }
 };
@@ -23,14 +19,12 @@ module.exports.postCreate=(req,res)=>{
     var userName={};
     userName.id=shortId.generate();
     userName.name=req.body.name;
-    console.log(userName);
     users.push(userName).write();
     res.redirect('/users');
 };
 module.exports.view=(req,res)=>{
     var id=req.params.id;
     var user=users.find({id:id}).value();
-    console.log(user);
     res.render('users/view',{users:user});
 };
 module.exports.getUpdate=(req,res)=>{

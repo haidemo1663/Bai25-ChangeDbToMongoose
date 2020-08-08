@@ -1,11 +1,6 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const shortId = require("shortid");
 const router=express.Router();
 
-
-const db=require('../db');
-const users=db.get('users');
 const userControllers=require('../controllers/users.controllers')
 router.get('/', userControllers.index)
 router.get('/create', userControllers.getCreate);

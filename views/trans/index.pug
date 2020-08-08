@@ -5,12 +5,18 @@ ul
             lable 
                 b ID:
                 span 
-                b #{tran.id}
+                b #{tran.id} &nbsp &nbsp
         span
             lable
             b User:
-            span #{tran.userid}
+            span #{tran.userid} &nbsp &nbsp &nbsp
         span 
             lable
             b Book:
-            span #{tran.bookid}
+            span #{tran.bookid} &nbsp&nbsp&nbsp
+        span 
+            lable
+            b isComplete:
+            span &nbsp #{tran.iscomplete}
+            span &nbsp &nbsp &nbsp &nbsp
+                a(href='/trans/'+tran.id+'/complete') update

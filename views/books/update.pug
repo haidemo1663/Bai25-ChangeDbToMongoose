@@ -1,18 +1,19 @@
 form(action='/books/:id/update' method='POST')
-  lable ID
+  lable 
+    b ID
   br
-  input(id='idd' type='text' name='id' value='')
+  input(type='text' name='id' value=books.id)
   br
-  lable Title
+  lable 
+    b Title
   br
-  input(type='text' name='title' value='')
+  input(type='text' name='title' value=books.title)
   br
-  lable Decription
+  lable 
+    b Decription
   br
-  input(type='text' name='decription' value='')
+  input(type='text' name='decription' value=books.decription)
   br
   br
   button Save
   
-  p #{idd}
-  script document.querySelector("input").setAttribute("value",`#{id}`);

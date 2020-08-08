@@ -16,6 +16,7 @@ router.post('/create',(req,res)=>{
     createTrans.id=shortId.generate();
     createTrans.userid=req.body.userid;
     createTrans.bookid=req.body.bookid;
+    createTrans.iscomplete= 'false';
     trans.push(createTrans).write();
     res.redirect('/trans');
     
@@ -26,9 +27,21 @@ router.get('/',(req,res)=>{
         temp.id=tran.id;
         temp.userid=users.value().find(u=>{return u.id==tran.userid}).name;
         temp.bookid=books.value().find(u=>{return u.id==tran.bookid}).title;
+        temp.iscomplete=tran.iscomplete;
         return temp;
     });
     res.render('trans/index',{trans:matchTrans});
+})
+
+router.get('/:id/complete',(req,res)=>{
+    var id =req.params.id;
+    var iscom=trans.find({id:id}).value().iscomplete;
+    console.log(iscom)
+    if(iscom==='true')
+        trans.find({id:id}).assign({iscomplete:'false'}).write();
+    else
+        trans.find({id:id}).assign({iscomplete:'true'}).write();
+    res.redirect('/trans');
 })
 
 module.exports=router;
