@@ -1,18 +1,21 @@
-form(action='/users' method='GET')
-  lable Name
-  br
-  input(type='text' name='name' value=keyword)
-  br
-  br
-  button Search
-a(href='users/create')
-    button New
-ul
-    each user in users
-        li= user.name
-          span &nbsp
-          a(href='/users/'+user.id) View
-          span &nbsp
-          a(href='/users/'+user.id+'/update') Update
-          span &nbsp
-          a(href='/users/'+user.id+'/delete') Xoa  
+extends ../common.pug
+
+block content
+  form(action='/users' method='GET')
+    lable Name
+    br
+    input(type='text' name='name' value=keyword)
+    br
+    br
+    button Search
+  a(href='users/create')
+      button New
+  ul
+      each user in users
+          li= user.name
+            span &nbsp
+            a(href='/users/'+user.id) View
+            span &nbsp
+            a(href='/users/'+user.id+'/update') Update
+            span &nbsp
+            a(href='/users/'+user.id+'/delete') Xoa  
