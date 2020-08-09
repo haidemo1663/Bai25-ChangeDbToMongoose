@@ -10,7 +10,7 @@ const routeTrans=require('./routes/transactions.route');
 const routeBooks=require('./routes/books.route')
 app.set("view engine", "pug");
 app.set("views", "./views");
-
+app.use(express.static('public'));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 
