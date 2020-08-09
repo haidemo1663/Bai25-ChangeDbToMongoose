@@ -2,7 +2,7 @@ const shortId = require("shortid");
 const db=require('../db');
 const users=db.get('users');
 module.exports.index=(req,res)=>{
-    var q = req.query.name;
+    var q = req.query.q;
     if (!q) {
       res.render("users/index", { users: users.value() });
     } else {
@@ -17,8 +17,9 @@ module.exports.getCreate=(req,res)=>{
 }
 module.exports.postCreate=(req,res)=>{
     var userName={};
+    userName=req.body;
     userName.id=shortId.generate();
-    userName.name=req.body.name;
+    console.log(userName);
     users.push(userName).write();
     res.redirect('/users');
 };
@@ -35,6 +36,7 @@ module.exports.getUpdate=(req,res)=>{
 module.exports.postUpdate=(req,res)=>{
     var id=req.body.id;
     var name=req.body.name;
+    var phone=req.body.phone;
     users.find({id:id}).assign({name:name}).write();
     res.redirect('/users');
 };

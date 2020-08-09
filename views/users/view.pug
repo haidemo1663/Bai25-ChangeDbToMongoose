@@ -1,9 +1,14 @@
-h1 View
-p 
-  b Id
+extends ../common.pug
+block content
+  p 
+    b Id:
     span &nbsp 
     span #{users.id}
-p 
-  b Name
-   span &nbsp 
-   span #{users.name}
+  p  
+    b Name:
+    span &nbsp 
+    span #{users.name}
+  p 
+    b Phone:
+    span &nbsp 
+    span #{users.phone}

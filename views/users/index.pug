@@ -1,22 +1,30 @@
 extends ../common.pug
 
 block content
-  img(src="/image/favicon.ico" style="width:64px;height:64px")
-  form(action='/users' method='GET')
-    lable Name
-    br
-    input(type='text' name='name' value=keyword)
-    br
-    br
-    button Search
-  a(href='users/create')
-      button New
-  ul
+  .d-flex
+    .col-6
+      form(action='/users' method='GET')
+        .form-group.d-flex
+          label.mr-2(for='q')
+            b Name
+          input#q.form-control.col-md-8(type='text', name='q', placeholder='Search')
+          button.btn.btn-primary.ml-2(type='submit') Search
+    .col-2      
+      a(href='/users/create')
+        button.btn.btn-primary.ml-2 New
+
+
+  table.table
+    th Name
+    th Phone Number
+    th Action
       each user in users
-          li= user.name
-            span &nbsp
-            a(href='/users/'+user.id) View
-            span &nbsp
-            a(href='/users/'+user.id+'/update') Update
-            span &nbsp
-            a(href='/users/'+user.id+'/delete') Xoa  
+          tr
+            td= user.name
+            td= user.phone
+            td
+              a.mr-2(href='/users/'+user.id) View
+              span 
+              a.mr-2(href='/users/'+user.id+'/update') Update
+              span
+              a.mr-2(href='/users/'+user.id+'/delete') Xoa  

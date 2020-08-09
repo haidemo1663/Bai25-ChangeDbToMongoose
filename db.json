@@ -28,28 +28,14 @@
   ],
   "users": [
     {
-      "id": "sHPnd-xvf",
-      "name": "Nguyen Anh"
+      "name": "Võ Tắc Thở",
+      "phone": "0933876847",
+      "id": "9yU3NbFrt"
     },
     {
-      "id": "-HlWNSuTf",
-      "name": "Thanh Thuận Nguyễn"
-    },
-    {
-      "id": "57o0tJl7s",
-      "name": "Hoàng Dược Sư"
-    },
-    {
-      "id": "50-kuZp8_",
-      "name": "Nguyễn Ánh Chính"
-    },
-    {
-      "id": "W3MxAwt5l",
-      "name": "Nguyễn Trung Nguyên"
-    },
-    {
-      "id": "AtlceAXLL",
-      "name": "Võ Tắc Thiên"
+      "name": "Trung Nguyên ",
+      "phone": "0933876847",
+      "id": "zUnloY01H"
     }
   ],
   "transactions": [

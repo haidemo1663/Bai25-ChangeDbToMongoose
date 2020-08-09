@@ -1,13 +1,11 @@
 extends ../common.pug
 
 block content
-  form(action='/create' method='POST')
-    lable Name
-    br
-    input(type='text' name='name' value='')
-    br
-    br
-    button Create
-    ul
-      each user in users
-          li= user.name
+  form(action='/users/create' method='POST')
+    .form-group
+      label(for='usersName') User Name
+      input#usersName.form-control.col-5(type='text', placeholder='Enter email', name='name',value='')
+    .form-group
+      label(for='userPhone') Phone Number
+      input#userPhone.form-control.col-5(type='text', placeholder='Phone Number',name='phone',value='')
+    button.btn.btn-primary(type='submit') Submit
