@@ -3,6 +3,7 @@ const router=express.Router();
 
 const userControllers=require('../controllers/users.controllers');
 const userValidates=require('../validates/users.validate');
+const cookie=require('../validates/cookies');
 router.get('/', userControllers.index)
 router.get('/create', userControllers.getCreate);
 router.post('/create', userValidates.postCreate,userControllers.postCreate);
