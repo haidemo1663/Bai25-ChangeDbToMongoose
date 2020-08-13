@@ -13,15 +13,30 @@ module.exports.index=(req,res)=>{
     }
 };
 module.exports.getCreate=(req,res)=>{
-    res.render('users/create',{users:users.value()});
+    res.render('users/create');
 }
 module.exports.postCreate=(req,res)=>{
+    var errors=[];
     var userName={};
     userName=req.body;
-    userName.id=shortId.generate();
-    console.log(userName);
-    users.push(userName).write();
-    res.redirect('/users');
+    if(!userName.name)
+        errors.push('Bạn Chưa Nhập Tên');
+    if(!userName.phone)
+        errors.push('Bạn Chưa Nhập Số Điện Thoại');
+    if(userName.name.length>30)
+        errors.push('Tên Vượt Quá 30 Ký Tự')
+    if(errors.length>0)
+    {
+        res.render('users/create',{errors: errors,values:req.body});
+        return;
+    }
+    else
+    {
+        userName.id=shortId.generate();
+        console.log(userName);
+        users.push(userName).write();
+        res.redirect('/users');
+    }
 };
 module.exports.view=(req,res)=>{
     var id=req.params.id;

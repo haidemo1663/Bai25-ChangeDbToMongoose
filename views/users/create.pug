@@ -1,11 +1,16 @@
 extends ../common.pug
 
 block content
+
+  if errors
+    each error in errors
+      .alert.alert-warning.col-5=error
+
   form(action='/users/create' method='POST')
     .form-group
       label(for='usersName') User Name
-      input#usersName.form-control.col-5(type='text', placeholder='Enter email', name='name',value='')
+      input#usersName.form-control.col-5(type='text', placeholder='Enter email', name='name',value=values? values.name:'')
     .form-group
       label(for='userPhone') Phone Number
-      input#userPhone.form-control.col-5(type='text', placeholder='Phone Number',name='phone',value='')
+      input#userPhone.form-control.col-5(type='text', placeholder='Phone Number',name='phone',value=values?values.phone:'')
     button.btn.btn-primary(type='submit') Submit
