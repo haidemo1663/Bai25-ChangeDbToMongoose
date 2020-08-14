@@ -17,6 +17,7 @@ module.exports.getCreate=(req,res)=>{
 }
 module.exports.postCreate=(req,res)=>{
     req.body.id=shortId.generate();
+    req.body.isAdmin=(req.body.isAdmin==='checked')?true:false;
     console.log(req.body);
     users.push(req.body).write();
     res.redirect('/users');

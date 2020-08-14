@@ -1,0 +1,16 @@
+extends ./common.pug
+
+block content
+
+  if errors
+    each error in errors
+      .alert.alert-warning.col-5=error
+    
+  form(action='/login' method='POST')
+    .form-group
+      label(for='mail') User Name
+      input#usersName.form-control.col-5(type='text', placeholder='Enter email', name='mail',value=values? values.mail:'')
+    .form-group
+      label(for='password') Password
+      input#userPhone.form-control.col-5(type='password', placeholder='Password',name='password',value=values?values.password:'')
+    button.btn.btn-primary(type='submit') Submit

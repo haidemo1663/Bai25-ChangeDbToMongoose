@@ -33,34 +33,50 @@
       "id": "9yU3NbFrt"
     },
     {
-      "name": "Trung Nguyên ",
-      "phone": "0933876847",
-      "id": "zUnloY01H"
-    },
-    {
+      "mail": "conchodien1207@gmail.com",
       "name": "Nguyễn Trung Nguyên",
       "phone": "0933876847",
-      "id": "WG_76KyhM"
+      "password": "123123",
+      "id": "WG_76KyhM",
+      "isAdmin": "false"
     },
     {
       "name": "Nguyễn Nhật Ánh",
       "phone": "0933876847",
-      "id": "W6QK9Ud1I"
+      "id": "W6QK9Ud1I",
+      "isAdmin": "false"
     },
     {
       "name": "Võ Thị Sáu",
       "phone": "0933876847",
-      "id": "l2xpjXJ8O"
+      "id": "l2xpjXJ8O",
+      "isAdmin": "false"
+    },
+    {
+      "name": "Ngô Văn Hải",
+      "phone": "0933876847",
+      "mail": "haidemons1663@gmail.com",
+      "password": "123456",
+      "isAdmin": "true",
+      "id": "JHzPkSx7G"
+    },
+    {
+      "name": "Nguyễn Văn A",
+      "phone": "0933876847",
+      "mail": "hai@gmail.com",
+      "password": "123456",
+      "id": "nGCoFtD9E",
+      "isAdmin": "false"
     }
   ],
   "transactions": [
     {
       "id": "cmDEpyS2k",
-      "userid": "zUnloY01H",
+      "userid": "nGCoFtD9E",
       "bookid": "rnuLt6Q2U",
       "iscomplete": "false",
       "title": "Ngồi Khóc Trên Cây",
-      "name": "Trung Nguyên "
+      "name": "Nguyễn Văn A "
     },
     {
       "id": "garAlZw3K",
@@ -71,9 +87,10 @@
       "name": "Võ Tắc Thở"
     },
     {
-      "id": "pDSUP_cvX",
-      "userid": "W6QK9Ud1I",
-      "bookid": "rnuLt6Q2U",
+      "userid": "JHzPkSx7G",
+      "bookid": "igKkEBPnf",
+      "name": "Ngô Văn Hải",
+      "title": "Mắt Biếc",
       "iscomplete": "false"
     }
   ]

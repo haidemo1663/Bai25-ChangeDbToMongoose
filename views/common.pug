@@ -7,9 +7,7 @@ html
         link(rel="stylesheet" href="/css/custome.css")
     body
         nav.navbar.navbar-expand-lg.navbar-light.bg-light
-            a.navbar-brand(href='users/create') Coder-Tokyo
-            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
-                span.navbar-toggler-icon
+            a.navbar-brand(href='/index') Coder-Tokyo
             #navbarNav.collapse.navbar-collapse
                 ul.navbar-nav
                     li.nav-item
@@ -22,5 +20,7 @@ html
                         a.nav-link(href='/books') Book
                     li.nav-item
                         a.nav-link(href='#') Bạn Bè
+            a(href='/login')
+                button.navbar-brand.btn.btn-primary Login
         .container.pt-5
             block content
