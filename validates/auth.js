@@ -7,10 +7,18 @@ module.exports.postLogin=(req,res,next)=>{
         return;
     }
     var user=db.get('users').find({id:req.cookies.id}).value();
-    console.log(user)
     if(!user)
     {
         res.redirect('/login'); return
     }
     next();
+}
+module.exports.authUserValidate=(req,res,next)=>{
+    var user=db.get('users').find({id:req.cookies.id}).value();
+    if(user.isAdmin){
+        next();
+    }
+    else{
+        res.redirect('/books');return;
+    }
 }

@@ -1,5 +1,6 @@
 const shortId = require("shortid");
 const db=require('../db');
+const md5 = require("md5");
 const users=db.get('users');
 module.exports.index=(req,res)=>{
     var q = req.query.q;
@@ -18,6 +19,7 @@ module.exports.getCreate=(req,res)=>{
 module.exports.postCreate=(req,res)=>{
     req.body.id=shortId.generate();
     req.body.isAdmin=(req.body.isAdmin==='checked')?true:false;
+    req.body.password=md5(req.body.password)
     console.log(req.body);
     users.push(req.body).write();
     res.redirect('/users');

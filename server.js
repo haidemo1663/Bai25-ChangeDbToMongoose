@@ -20,9 +20,9 @@ app.use(express.static('public'));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/',routeIndex)
-app.use('/users',auth.postLogin,cookies.cookies,routeUser);
-app.use('/trans',auth.postLogin,cookies.cookies,routeTrans);
-app.use('/books',auth.postLogin,cookies.cookies,routeBooks);
-app.listen(3000, () => {
+app.use('/users',auth.postLogin,auth.authUserValidate,routeUser);
+app.use('/trans',auth.postLogin,routeTrans);
+app.use('/books',auth.postLogin,routeBooks);
+app.listen(3000, (req,res) => {
   console.log("Day la port : " + 3000);
 });
