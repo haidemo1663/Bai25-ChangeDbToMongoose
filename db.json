@@ -31,41 +31,37 @@
       "name": "Ngô Văn Hải",
       "phone": "0933876847",
       "mail": "haidemons1663@gmail.com",
-      "password": "123123",
+      "password": "4297f44b13955235245b2497399d7a93",
       "id": "JHzPkSx7G",
-      "isAdmin": true
+      "isAdmin": true,
+      "countWrongLogin": 0
     },
     {
       "name": "Nguyễn Trung Nguyên",
       "phone": "0933876847",
       "mail": "trunngnguyen@gmail.com",
-      "password": "123123",
-      "id": "AG6d1KEtJ",
-      "isAdmin": false
+      "password": "$2b$10$M3QxKK2OfIa.St8rTX1Ta.L0Y2.gCxz.KK6aoOjkQvm27.vspECx6",
+      "id": "HhaR2Ytpf",
+      "isAdmin": false,
+      "countWrongLogin": 0
     },
     {
       "name": "Lê Thanh Thuận",
       "phone": "0933876847",
-      "mail": "conchodien1207@gmail.com",
-      "password": "123123",
-      "id": "_Z5goGdFB",
-      "isAdmin": false
+      "mail": "thanhthuan@gmail.com",
+      "password": "$2b$10$x3aVK1lGYEuHLR7th5l2lO1A.K2cfQQ82/bRxchnWLt7yXCPmG2Qi",
+      "id": "r6GY2kusv",
+      "isAdmin": false,
+      "countWrongLogin": 0
     },
     {
       "name": "Lê Hồng Thái",
       "phone": "0933876847",
       "mail": "hongthai@gmail.com",
-      "password": "123123",
-      "id": "oMX8F7QS8",
-      "isAdmin": false
-    },
-    {
-      "name": "Vy Chi Hoa",
-      "phone": "0933876847",
-      "mail": "vyhoa@gmail.com",
-      "password": "4297f44b13955235245b2497399d7a93",
-      "id": "waSRZEQWH",
-      "isAdmin": false
+      "password": "$2b$10$ozhcA5lwFyEb.8I1o7T3d.hN.wfx91cB3mdmUk9Rx2AUKG/PRza2S",
+      "id": "Pw0IkaKgl",
+      "isAdmin": false,
+      "countWrongLogin": 0
     }
   ],
   "transactions": [

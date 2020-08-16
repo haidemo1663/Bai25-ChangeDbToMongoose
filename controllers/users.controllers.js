@@ -1,7 +1,7 @@
 const shortId = require("shortid");
 const db=require('../db');
-const md5 = require("md5");
 const users=db.get('users');
+const bcrypt = require('bcrypt')
 module.exports.index=(req,res)=>{
     var q = req.query.q;
     if (!q) {
@@ -17,12 +17,17 @@ module.exports.getCreate=(req,res)=>{
     res.render('users/create');
 }
 module.exports.postCreate=(req,res)=>{
-    req.body.id=shortId.generate();
-    req.body.isAdmin=(req.body.isAdmin==='checked')?true:false;
-    req.body.password=md5(req.body.password)
-    console.log(req.body);
-    users.push(req.body).write();
-    res.redirect('/users');
+    const saltRounds = 10;
+    var password= req.body.password;
+    bcrypt.hash(password, saltRounds, function (err, hash) {
+        req.body.id=shortId.generate();
+        req.body.password=hash;
+        req.body.isAdmin=(req.body.isAdmin==='checked')?true:false;
+        console.log(req.body);
+        users.push(req.body).write();
+        res.redirect('/users');
+    });
+    return;
 };
 module.exports.view=(req,res)=>{
     var id=req.params.id;

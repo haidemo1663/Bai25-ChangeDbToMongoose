@@ -1,22 +1,24 @@
-h1 Transactions
-ul
-    each tran in trans
-        li
-            lable 
-                b ID:
-                span 
-                b #{tran.id} &nbsp &nbsp
-        span
-            lable
-            b User:
-            span #{tran.name} &nbsp &nbsp &nbsp
-        span 
-            lable
-            b Book:
-            span #{tran.title} &nbsp&nbsp&nbsp
-        span 
-            lable
-            b isComplete:
-            span &nbsp #{tran.iscomplete}
-            span &nbsp &nbsp &nbsp &nbsp
-                a(href='/trans/'+tran.id+'/complete') update
+extends ../common.pug
+block content
+    h1 Transactions
+    ul
+        each tran in trans
+            li
+                lable 
+                    b ID:
+                    span 
+                    b #{tran.id} &nbsp &nbsp
+            span
+                lable
+                b User:
+                span #{tran.name} &nbsp &nbsp &nbsp
+            span 
+                lable
+                b Book:
+                span #{tran.title} &nbsp&nbsp&nbsp
+            span 
+                lable
+                b isComplete:
+                span &nbsp #{tran.iscomplete}
+                span &nbsp &nbsp &nbsp &nbsp
+                    a(href='/trans/'+tran.id+'/complete') update

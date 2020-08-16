@@ -12,7 +12,7 @@ const routeUser=require('./routes/users.route');
 const routeTrans=require('./routes/transactions.route');
 const routeBooks=require('./routes/books.route')
 const cookies=require('./validates/cookies');
-const auth=require('./validates/auth');
+const auth=require('./validates/auth.validate');
 const routeIndex=require('./routes/index.route');
 app.set("view engine", "pug");
 app.set("views", "./views");
