@@ -9,7 +9,7 @@ module.exports.login=(req,res,next)=>{
 }
 module.exports.postLogin=(req,res,next)=>{
     var user=users.find({mail:req.body.mail}).value();
-    res.cookie('id',user.id);
+    res.cookie('id',user.id,{signed:true});
     res.redirect('/users');
 }
 module.exports.countWrongLogin=(req,res,next)=>{

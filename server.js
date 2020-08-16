@@ -6,7 +6,7 @@ const books=db.get('books');
 const app = express();
 var cookieParser = require('cookie-parser')
  
-app.use(cookieParser())
+app.use(cookieParser(shortId.generate()));
 
 const routeUser=require('./routes/users.route');
 const routeTrans=require('./routes/transactions.route');

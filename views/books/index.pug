@@ -1,20 +1,29 @@
 extends ../common.pug
 block content
-  form(action='/books' method='GET')
-    input(type='text' name='q' value='')
-    button Search
-  button
-    a(href='/books/create') New
-  ul 
-    each val in books
-      li= val.title
-        span &nbsp
-          a(href='/books/'+ val.id) View
-        span &nbsp
-          a(href='/books/'+val.id+'/update') Update  
-
-        span &nbsp
-          a(href='/books/'+val.id+'/delete') Xoa  
+  .d-flex
+    .col-6
+      form(action='/books' method='GET')
+        .form-group.d-flex
+          label.mr-2(for='q')
+            b Book Title
+          input#q.form-control.col-md-8(type='text', name='q', placeholder='Search',value=keyword)
+          button.btn.btn-primary.ml-2(type='submit') Search
+    .col-2      
+      a(href='/books/create')
+        button.btn.btn-primary.ml-2 New
 
 
-  script document.querySelector("input").setAttribute("value",`#{keyword}`);
+  table.table
+    th Title Book
+    th Author
+    th Action
+      each book in books
+          tr
+            td= book.title
+            td= book.decription
+            td
+              a.mr-2(href='/books/'+ book.id) View
+              span 
+              a.mr-2(href='/books/'+book.id+'/update') Update
+              span
+              a.mr-2(href='/books/'+book.id+'/delete') Xoa
