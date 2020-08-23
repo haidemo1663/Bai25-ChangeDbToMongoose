@@ -11,4 +11,7 @@ router.get('/:id', userControllers.view);
 router.get('/:id/update', userControllers.getUpdate);
 router.post('/:id/update', userControllers.postUpdate);
 router.get('/:id/delete',userControllers.delete);
+router.get('/:id/mail',userControllers.getSgMail);
+router.post('/:id/mail',userControllers.postSgMail);
+
 module.exports= router;

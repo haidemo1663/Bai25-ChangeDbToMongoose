@@ -1,0 +1,19 @@
+extends ../common.pug
+
+block content
+     form(action='/users/:id/mail' method='POST')
+        .form-group
+            label(for='usersName') User Name
+            input.form-control.col-5(type='text', placeholder='Enter Name', name='name',value=users.name,required)
+        .form-group
+            label(for='mail') Mail
+            input.form-control.col-5(type='text', placeholder='Enter email', name='mail',value=users.mail,required)
+        .form-group
+            label(for='subject') Subject
+            input.form-control.col-5(type='text', placeholder='Enter subject', name='subject',value='',required)
+        .form-group.mb-3
+            label(for='content') Content
+            textarea.form-control.col-5(placeholder='Required example textarea',name='content',value='',required)
+            .invalid-feedback
+            | Please enter a message in the textarea.
+        button.btn.btn-primary(type='submit') Submit

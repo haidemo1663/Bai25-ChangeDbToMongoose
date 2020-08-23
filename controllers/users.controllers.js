@@ -1,7 +1,8 @@
 const shortId = require("shortid");
 const db=require('../db');
 const users=db.get('users');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const sgMail=require('@sendgrid/mail');
 module.exports.index=(req,res)=>{
     var q = req.query.q;
     if (!q) {
@@ -43,11 +44,28 @@ module.exports.postUpdate=(req,res)=>{
     var id=req.body.id;
     var name=req.body.name;
     var phone=req.body.phone;
-    users.find({id:id}).assign({name:name}).write();
+    users.find({id:id}).assign({name:name,phone:phone}).write();
     res.redirect('/users');
 };
 module.exports.delete=(req,res)=>{
     var id=req.params.id;
     users.remove({id:id}).write();
     res.redirect('/users');
+}
+module.exports.getSgMail=(req,res)=>{
+    var id=req.params.id;
+    var user= users.find({id:id}).value();
+    res.render('users/contact',{users:user})
+}
+module.exports.postSgMail=(req,res)=>{
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    var message={
+        to: req.body.mail,
+        from: 'conchodien1207@gmail.com',
+        subject: req.body.subject,
+        text: req.body.content,
+        html:`<strong> ${req.body.content}</strong>`
+    }
+    sgMail.send(message);
+    res.redirect('/users')
 }
