@@ -23,8 +23,8 @@ module.exports.postCreate=(req,res)=>{
     bcrypt.hash(password, saltRounds, function (err, hash) {
         req.body.id=shortId.generate();
         req.body.password=hash;
+        req.body.avatar=req.file.path.split("\\").slice(1).join("/");
         req.body.isAdmin=(req.body.isAdmin==='checked')?true:false;
-        console.log(req.body);
         users.push(req.body).write();
         res.redirect('/users');
     });
@@ -35,16 +35,14 @@ module.exports.view=(req,res)=>{
     var user=users.find({id:id}).value();
     res.render('users/view',{users:user});
 };
-module.exports.getUpdate=(req,res)=>{
+module.exports.update=(req,res)=>{
     var id=req.params.id;
     var user=users.find({id:id}).value();
     res.render('users/update',{users:user});
 };
-module.exports.postUpdate=(req,res)=>{
-    var id=req.body.id;
-    var name=req.body.name;
-    var phone=req.body.phone;
-    users.find({id:id}).assign({name:name,phone:phone}).write();
+module.exports.pUpdate=(req,res)=>{
+    var user=req.body;
+    users.find({id:id}).assign({name:user.name,phone:user.phone}).write();
     res.redirect('/users');
 };
 module.exports.delete=(req,res)=>{

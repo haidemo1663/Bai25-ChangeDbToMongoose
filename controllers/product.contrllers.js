@@ -5,8 +5,7 @@ module.exports.index = function(req, res) {
     var nextPage = page+1;
     var prePage = page-1;
     var perPage = 8; //x
-    var start = (page-1)*perPage;
-    var end = (page*perPage);
+    var start = (page-1)*perPage;;
     var take = 8;
     console.log([prePage,page,nextPage]);
     res.render("./products/index", {

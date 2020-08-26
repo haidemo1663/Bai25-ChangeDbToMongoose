@@ -14,12 +14,12 @@ block content
                 img.card-img-top(src=product.image alt='...')
                 .card-body
                     h5.card-title(style='font-size:12px')=product.name
-                    p.card-text(style='font-size:12px')=product.description
+                    p.card-text(style='font-size:12px')=product.decription  
                     a.btn.btn-primary(href='#') Add Product
     nav(aria-label='...')
         ul.pagination
             li.page-item.disabled
-            a.page-link(href="?page"+"="+(listPage[1]-1) tabindex='-1') Previous
+            a.page-link(href="?page"+"="+(listPage[1]-1)) Previous
             li.page-item
             a.page-link(href="?page"+"="+listPage[0])=listPage[0]
             li.page-item.active

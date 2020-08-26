@@ -60,7 +60,19 @@
       "mail": "haidemons1663@gmail.com",
       "password": "$2b$10$eM2e.5swhI/idCL1bV8VfOqV08tmtNxT/StGgQL5oDVtYoSQscM9i",
       "isAdmin": true,
-      "id": "iyYiF5T_4"
+      "id": "iyYiF5T_4",
+      "countWrongLogin": 0
+    },
+    {
+      "name": "Nguyễn Thị Hồng Nhung",
+      "phone": "0933876847",
+      "mail": "nhung@gmail.com",
+      "password": "$2b$10$qJb0FqCkfIi6XPog6SSji.2PyZCJ804OSDOn5Dh5oiD7nBMBir7IK",
+      "id": "ug6kUNvTf",
+      "isAdmin": false,
+      "avatar": "https://res.cloudinary.com/dm9bs55dz/image/upload/v1598446540/oaroxj5npjaaerislkqb.png",
+      "countWrongLogin": 0,
+      "phoone": "0933876847"
     }
   ],
   "transactions": [

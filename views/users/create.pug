@@ -6,7 +6,7 @@ block content
     each error in errors
       .alert.alert-warning.col-5=error
 
-  form(action='/users/create' method='POST')
+  form(action='/users/create' method='POST' enctype="multipart/form-data")
     .form-group
       label(for='usersName') User Name
       input.form-control.col-5(type='text', placeholder='Enter Name', name='name',value=values? values.name:'',required)
@@ -19,6 +19,10 @@ block content
     .form-group
       label(for='password') Password
       input.form-control.col-5(type='text', placeholder='Enter Password', name='password',value=values? values.password:'',required)
+    .form-group
+      label(for='avatar') Avatar
+      input#avatar.form-control-file(type='file',name='avatar',required)
+
     .form-check
       input.form-check-input(type='checkbox', value='checked',name='isAdmin')
       label.form-check-label(for='isAdmin') isAdmin

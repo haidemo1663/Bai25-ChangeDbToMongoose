@@ -14,12 +14,3 @@ module.exports.postLogin=(req,res,next)=>{
     res.locals.user=user;
     next();
 }
-module.exports.authUserValidate=(req,res,next)=>{
-    var user=db.get('users').find({id:req.signedCookies.id}).value();
-    if(user.isAdmin){
-        next();
-    }
-    else{
-        res.redirect('/books');return;
-    }
-}

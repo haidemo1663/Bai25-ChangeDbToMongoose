@@ -1,0 +1,26 @@
+extends ../common.pug
+
+block content
+    img(src=users.avatar, width='100px')
+    form(action='/profile', method='POST', enctype="multipart/form-data")
+        .form-group
+            label(for='avatar') Avatar
+            input#avatar.form-control-file(type='file',name='avatar')
+        .form-group
+            label(for='id')
+            b ID
+            input#id.form-control.col-5(type='text', name='id',value=users.id)
+        .form-group
+            label.b(for='name')
+            b Name
+            input#name.form-control.col-5(type='text', name='name',value=users.name)
+        .form-group
+            label.b(for='mail')
+            b Mail
+            input#mail.form-control.col-5(type='text', name='mail',value=users.mail)
+        .form-group
+            label.b(for='phone') 
+            b Phone Number
+            input#phone.form-control.col-5(type='text',name='phone',value=users.phone)
+        button.btn.btn-primary(type='submit') Submit
+

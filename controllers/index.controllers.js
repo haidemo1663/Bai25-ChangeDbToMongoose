@@ -1,6 +1,13 @@
 const db=require('../db');
 const users=db.get('users');
 const bcrypt = require('bcrypt');
+const { signedCookie } = require('cookie-parser');
+var cloudinary = require('cloudinary').v2;
+cloudinary.config({
+    cloud_name: process.env.cloud_name,
+    api_key: process.env.api_key,
+    api_secret: process.env.api_secret
+  });
 module.exports.index=(req,res,next)=>{
     res.render('index');
 }
@@ -35,4 +42,24 @@ module.exports.countWrongLogin=(req,res,next)=>{
         return;
     }
     next();
+}
+module.exports.profile=(req,res)=>{
+    var user=users.find({id:req.signedCookies.id}).value();
+    res.render('profile/index',{users:user});
+}
+module.exports.pProfile=async(req,res)=>{
+    var x = db.get("users").find({id: req.signedCookies.id})
+    if(!req.file){
+        x
+        .assign({ name: req.body.name},{phone:req.body.phone})
+        .write();
+    }
+    else{
+        var data=req.file.path;
+        var result = await cloudinary.uploader.upload(data);
+        x
+        .assign({ name: req.body.name},{avatar:result.secure_url },{phone:req.body.phone})
+        .write();
+    }
+    res.redirect('/profile');
 }
