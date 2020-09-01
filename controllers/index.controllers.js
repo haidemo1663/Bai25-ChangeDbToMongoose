@@ -1,16 +1,12 @@
 const db=require('../db');
 const users=db.get('users');
 const bcrypt = require('bcrypt');
-const { signedCookie } = require('cookie-parser');
 var cloudinary = require('cloudinary').v2;
 cloudinary.config({
     cloud_name: process.env.cloud_name,
     api_key: process.env.api_key,
     api_secret: process.env.api_secret
   });
-module.exports.index=(req,res,next)=>{
-    res.render('index');
-}
 module.exports.login=(req,res,next)=>{
     res.render('login');
 }

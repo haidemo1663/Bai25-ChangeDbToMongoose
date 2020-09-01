@@ -1,19 +1,29 @@
-form(action='/books/:id/update' method='POST')
-  lable 
-    b ID
-  br
-  input(type='text' name='id' value=books.id)
-  br
-  lable 
-    b Title
-  br
-  input(type='text' name='title' value=books.title)
-  br
-  lable 
-    b Decription
-  br
-  input(type='text' name='decription' value=books.decription)
-  br
-  br
-  button Save
-  
+extends ../common.pug
+
+block content
+    img(src=values.coverUrl, width='100px')
+    form(action='/books/:id/update', method='POST', enctype="multipart/form-data")
+        .form-group
+            label(for='coverUrl') Cover URL
+            input#avatar.form-control-file(type='file',name='coverUrl')
+        .form-group
+            label(for='id')
+            b ID
+            input#id.form-control.col-5(type='text', name='id',value=values.id)
+        .form-group
+            label.b(for='title')
+            b Title
+            input#name.form-control.col-5(type='text', name='title',value=values.title)
+        .form-group
+            label.b(for='author')
+            b Author
+            input#mail.form-control.col-5(type='text', name='author',value=values.author)
+        .form-group
+            label.b(for='decription')
+            b Decription
+            input#mail.form-control.col-5(type='text', name='decription',value=values.decription)
+        .form-group
+            label.b(for='price') 
+            b Price
+            input#phone.form-control.col-5(type='text',name='price',value=values.price)
+        button.btn.btn-primary(type='submit') Submit

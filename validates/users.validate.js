@@ -19,3 +19,22 @@ module.exports.postCreate=(req,res,next)=>{
     }
     next();
 }
+module.exports.userSession=(req,res,next)=>{
+    var user=db.get('users').find({id:req.signedCookies.id}).value();
+    var listItems=[];
+    var sessionItems=db.get('sessions').find({id:req.signedCookies.SessionId}).get('cart').value();
+    for(var id in sessionItems){
+        var items={};
+        items['id']=id;
+        items['count']=sessionItems[id];
+        listItems.push(items);
+    }
+    var sum=listItems.reduce((accumulator,currentValue)=>{
+        return accumulator+currentValue.count
+    },0);
+    res.locals.user=user;
+    res.locals.shoppingCartSession=listItems;
+    res.locals.sum=sum;
+
+    next();
+}

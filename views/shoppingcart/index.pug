@@ -1,0 +1,9 @@
+extends ../common.pug
+block content
+  table.table
+    th Name
+    th Number
+      each item in shoppingCartSession
+          tr
+            td= item.id
+            td= item.count

@@ -1,0 +1,66 @@
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  margin-right: 8px;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+.cart-numbers{
+  position: relative;
+  width: 25px;
+  height: 25px;
+  color: #444;
+  background-color: #f1b1b1;
+  font-size: 16px;
+  margin-left: -10px;
+  margin-right: 15px;
+  text-align: center;
+  border-radius: 50%;
+}
+.card{
+  width:60%;
+}
+.card{
+  width: 151px;
+  height: 220px;
+}
+.card img{
+  width: 100%;
+  height: 100%;
+}
+.card-body-content{
+  width: 60%;
+  display: block;
+  padding: 1.25rem 0;
+  box-sizing: border-box;
+  position: relative;
+  height: 170px;
+}
+.card-body-content .addToCart .btn-primary{
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+  bottom: 18px;
+  position: absolute;
+}
+.name-user{
+  padding: 0 15px;
+}

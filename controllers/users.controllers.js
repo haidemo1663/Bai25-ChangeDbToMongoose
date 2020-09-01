@@ -1,17 +1,15 @@
-const shortId = require("shortid");
-const db=require('../db');
-const users=db.get('users');
 const bcrypt = require('bcrypt');
+var user=require('../models/User.model');
 const sgMail=require('@sendgrid/mail');
-module.exports.index=(req,res)=>{
+module.exports.index=async (req,res)=>{
     var q = req.query.q;
     if (!q) {
-      res.render("users/index", { users: users.value() });
+      res.render("users/index", { users: await user.find({})});
     } else {
-      var matchUser = users.filter(user => {
+      var matchUser = await user.find({}).pretty().filter(user => {
         return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
       });
-      res.render("users/index", { users: matchUser.value(), keyword: q });
+      res.render("users/index", { users: matchUser, keyword: q });
     }
 };
 module.exports.getCreate=(req,res)=>{
@@ -21,39 +19,37 @@ module.exports.postCreate=(req,res)=>{
     const saltRounds = 10;
     var password= req.body.password;
     bcrypt.hash(password, saltRounds, function (err, hash) {
-        req.body.id=shortId.generate();
         req.body.password=hash;
         req.body.avatar=req.file.path.split("\\").slice(1).join("/");
         req.body.isAdmin=(req.body.isAdmin==='checked')?true:false;
-        users.push(req.body).write();
+        user.create(req.body);
         res.redirect('/users');
     });
     return;
 };
-module.exports.view=(req,res)=>{
+module.exports.view=async (req,res)=>{
     var id=req.params.id;
-    var user=users.find({id:id}).value();
-    res.render('users/view',{users:user});
+    var person=await user.find({_id: id});
+    res.render('users/view',{users: person[0]});
 };
-module.exports.update=(req,res)=>{
+module.exports.update=async (req,res)=>{
     var id=req.params.id;
-    var user=users.find({id:id}).value();
-    res.render('users/update',{users:user});
+    var person=await user.find({_id:id});
+    res.render('users/update',{users:person[0]});
 };
-module.exports.pUpdate=(req,res)=>{
-    var user=req.body;
-    users.find({id:id}).assign({name:user.name,phone:user.phone}).write();
+module.exports.pUpdate=async(req,res)=>{
+    await user.findOneAndUpdate({_id:id},req.body);
     res.redirect('/users');
 };
 module.exports.delete=(req,res)=>{
     var id=req.params.id;
-    users.remove({id:id}).write();
+    user.findOneAndDelete({_id:id}).then(result=>{console.log('Da Xoa'+ "       "+result)});
     res.redirect('/users');
 }
 module.exports.getSgMail=(req,res)=>{
     var id=req.params.id;
-    var user= users.find({id:id}).value();
-    res.render('users/contact',{users:user})
+    var users= user.find({_id:id});
+    res.render('users/contact',{users:users})
 }
 module.exports.postSgMail=(req,res)=>{
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);

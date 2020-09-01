@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --inspect server.js localhost 3000"
+    "start": "nodemon --inspect server.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "lowdb": "^1.0.0",
     "md5": "^2.3.0",
+    "mongoose": "^5.10.2",
     "multer": "^1.4.2",
     "pug": "^3.0.0",
     "shortid": "^2.2.15"

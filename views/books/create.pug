@@ -1,11 +1,24 @@
-form(action='/books/create' method='POST')
-  lable Title
-  br
-  input(type='text' name='title')
-  br
-  lable Decription
-  br
-  input(type='text' name='decription')
-  br
-  br
-  button Create
+extends ../common.pug
+
+block content
+    form(action='/books/create', method='POST', enctype="multipart/form-data")
+        .form-group
+            label(for='coverUrl') Cover URL
+            input#avatar.form-control-file(type='file',name='coverUrl')
+        .form-group
+            label.b(for='title')
+            b Title
+            input#name.form-control.col-5(type='text', name='title')
+        .form-group
+            label.b(for='author')
+            b Author
+            input#mail.form-control.col-5(type='text', name='author')
+        .form-group
+            label.b(for='decription')
+            b Decription
+            input#mail.form-control.col-5(type='text', name='decription')
+        .form-group
+            label.b(for='price') 
+            b Price
+            input#phone.form-control.col-5(type='text',name='price')
+        button.btn.btn-primary(type='submit') Submit
