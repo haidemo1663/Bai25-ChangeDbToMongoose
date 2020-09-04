@@ -2,9 +2,10 @@ const express = require("express");
 const router=express.Router();
 const userControllers=require('../controllers/users.controllers');
 const userValidates=require('../validates/users.validate');
+var authorUser=require('../validates/auth.validate');
 var multer  = require('multer');
 var upload = multer({ dest: './public/uploads' });
-router.get('/',userValidates.userSession,userControllers.index)
+router.get('/',userControllers.index)
 router.get('/create', userControllers.getCreate);
 router.post('/create',upload.single('avatar'),userValidates.postCreate,userControllers.postCreate);
 router.get('/:id/', userControllers.view);

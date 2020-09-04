@@ -1,22 +1,15 @@
 extends ../common.pug
 
 block content
-  .d-flex
-    .col-6
-      form(action='/users' method='GET')
-        .form-group.d-flex
-          label.mr-2(for='q')
-            b Name
-          input#q.form-control.col-md-8(type='text', name='q', placeholder='Search',value=keyword)
-          button.btn.btn-primary.ml-2(type='submit') Search
-    .col-2      
-      a(href='/users/create')
-        button.btn.btn-primary.ml-2 New
+  form.form-inline(action='/users' method='GET')
+    input.form-control.mr-sm-2(type='text', name='q', placeholder='Search',value=keyword)
+    button.btn.btn-primary.my-2.my-sm-0(type='submit') Search
+    a.btn.btn-primary.ml-2(href='/users/  create' type='button') New
 
 
   table.table
     th Avatar
-    th Name
+    th Name 
     th Phone Number
     th Action
       each user in users

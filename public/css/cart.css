@@ -1,0 +1,39 @@
+.wish-list{
+    padding:20px;
+    margin: 0 8px;
+    box-shadow: 5px 5px 10px 5px rgb(8,8,8,0.1),-5px -5px 10px 5px rgb(8,8,8,0.1);
+    border-radius:20px;
+}
+.total-cart{
+    padding:20px;
+    box-shadow: 5px 5px 10px 5px rgb(8,8,8,0.1),-5px -5px 10px 5px rgb(8,8,8,0.1);
+    border-radius:20px;
+}
+.def-number-input{
+    display: flex;
+    max-width: 9rem;
+    height: 30px;
+    justify-content: center ;
+
+}
+.def-number-input .quantity{
+    max-width: 3rem;
+    text-align: center;
+    border: none;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+.def-number-input button{
+    width: 2rem;
+    margin: 0 !important;
+    box-shadow: none;
+    border: 1px solid #000;
+    border-radius: 0;
+    background-color: #ced4da;
+    padding: 0;
+    
+}
+.def-number-input button .material-icons{
+    font-size: 14px;
+    margin: 0;
+}

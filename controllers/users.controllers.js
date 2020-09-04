@@ -3,10 +3,11 @@ var user=require('../models/User.model');
 const sgMail=require('@sendgrid/mail');
 module.exports.index=async (req,res)=>{
     var q = req.query.q;
+    var users=await user.find({});
     if (!q) {
-      res.render("users/index", { users: await user.find({})});
+      res.render("users/index", { users: users});
     } else {
-      var matchUser = await user.find({}).pretty().filter(user => {
+        var matchUser = users.filter(user => {
         return user.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
       });
       res.render("users/index", { users: matchUser, keyword: q });
@@ -30,7 +31,7 @@ module.exports.postCreate=(req,res)=>{
 module.exports.view=async (req,res)=>{
     var id=req.params.id;
     var person=await user.find({_id: id});
-    res.render('users/view',{users: person[0]});
+    res.render('users/view',{users: person});
 };
 module.exports.update=async (req,res)=>{
     var id=req.params.id;
@@ -38,17 +39,17 @@ module.exports.update=async (req,res)=>{
     res.render('users/update',{users:person[0]});
 };
 module.exports.pUpdate=async(req,res)=>{
-    await user.findOneAndUpdate({_id:id},req.body);
-    res.redirect('/users');
+    var newContent=req.body;
+    user.findOneAndUpdate({_id:newContent.id},req.body)
+    .then( res.redirect('/users'));
 };
 module.exports.delete=(req,res)=>{
     var id=req.params.id;
-    user.findOneAndDelete({_id:id}).then(result=>{console.log('Da Xoa'+ "       "+result)});
-    res.redirect('/users');
+    user.findOneAndDelete({_id:id}).then(res.redirect('/users'));
 }
 module.exports.getSgMail=(req,res)=>{
     var id=req.params.id;
-    var users= user.find({_id:id});
+    var users= user.find({id:id});
     res.render('users/contact',{users:users})
 }
 module.exports.postSgMail=(req,res)=>{

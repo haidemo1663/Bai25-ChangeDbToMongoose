@@ -1,14 +1,25 @@
 var shortId=require('shortid');
-var db=require('../db');
-module.exports=(req,res,next)=>{
+var localStorage=require('node-persist');
+module.exports=async(req,res,next)=>{
     if(!req.signedCookies.SessionId){
         var sessionid=shortId.generate();
         res.cookie('SessionId',sessionid,{
             signed: true
         });
-        db.get('sessions')
-        .push({id:sessionid})
-        .write();
     }
+    try{
+        await localStorage.init({
+            dir:'localStorage',
+            ttl: 30 * 60 * 1000,
+            stringify: JSON.stringify,
+            parse: JSON.parse,
+            encoding: 'utf8',
+            expiredInterval: 1 * 60 * 1000 // every 2 minutes the process will clean-up the expired cache
+        });
+    }
+    catch{
+        console.log("Loi con me no roi");
+    }
+    
     next();
 }

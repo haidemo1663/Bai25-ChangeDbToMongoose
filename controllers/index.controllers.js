@@ -1,5 +1,4 @@
-const db=require('../db');
-const users=db.get('users');
+const user=require('../models/User.model');
 const bcrypt = require('bcrypt');
 var cloudinary = require('cloudinary').v2;
 cloudinary.config({
@@ -10,34 +9,17 @@ cloudinary.config({
 module.exports.login=(req,res,next)=>{
     res.render('login');
 }
-module.exports.postLogin=(req,res,next)=>{
-    var user=users.find({mail:req.body.mail}).value();
-    res.cookie('id',user.id,{signed:true});
-    res.redirect('/users');
-}
-module.exports.countWrongLogin=(req,res,next)=>{
-    const password= req.body.password;
-    var errors=[];
-    var user=users.find({mail:req.body.mail}).value();
-    if(!user)
-    {
-        errors.push('Account does not exists');
-    };
-    if(user.countWrongLogin<4){
-        var result=bcrypt.compareSync(password, user.password, function(err, result) {});
-        if(!result)
-        {
-            errors.push('Password is wrong');
-        }
-    }   
-    else errors.push('Account blocked!');
-    if(errors.length>0)
-    {
-        user.countWrongLogin++;
-        res.render('login',{errors:errors,values:req.body});
-        return;
+module.exports.postLogin=async(req,res)=>{
+    var users=await user.findOne({"mail" : req.body.mail});
+    var result= bcrypt.compareSync(req.body.password, users.password);
+    if(result){
+        res.cookie('id',users.id,{signed:true});
+        res.redirect('/users');
     }
-    next();
+    else
+    {
+        res.redirect('/login');
+    }
 }
 module.exports.profile=(req,res)=>{
     var user=users.find({id:req.signedCookies.id}).value();

@@ -1,3 +1,15 @@
+.container{
+  margin-top: 20px;
+}
+.form-inline{
+  display: flex;
+  justify-content: flex-end;
+}
+.navbar-brand{
+  border: 1px solid #000;
+  padding: 8px;
+  border-radius: 5px;
+}
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -54,12 +66,12 @@
   position: relative;
   height: 170px;
 }
-.card-body-content .addToCart .btn-primary{
+.card-body-content .addToCart.btn-primary{
   color: #fff;
   background-color: #007bff;
   border-color: #007bff;
-  bottom: 18px;
   position: absolute;
+  bottom: 10px;
 }
 .name-user{
   padding: 0 15px;

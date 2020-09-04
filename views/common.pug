@@ -2,35 +2,35 @@ html
     head
         link(rel="icon" type="image/png" sizes="16x16" href="/image/favicon.ico")
         link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css")
+        link(rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb-pro.min.css")
+        link(rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/mdb.ecommerce.min.css")
+        link(rel="stylesheet" href="https://mdbootstrap.com/previews/ecommerce-demo/css/bootstrap.min.css")
         link(rel='stylesheet', type='text/css', href='/css/main.css')
-        link(rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css")
-
+        block styleCss
+    
     body
         nav.navbar.navbar-expand-lg.navbar-light.bg-light
             a.navbar-brand(href='/') Coder-Tokyo
             #navbarNav.collapse.navbar-collapse
                 ul.navbar-nav
                     li.nav-item
-                        a.nav-link(href='#') Trang Chủ
+                        a.nav-link(href='#') Home
                     li.nav-item
-                        a.nav-link(href='/products') Product
+                        a.nav-link(href='/books') Product
                     li.nav-item
                         a.nav-link(href='/users') Users
                     li.nav-item
-                        a.nav-link(href='#') Cart
-                    li.nav-item
-                        a.nav-link(href='#') Contact
+                        a.nav-link(href='/cart') Cart
             
             if user
                 .name-user
                     img.rounded-circle.mr-2(src=user.avatar,width='20px',height='20px')
                     span= user.name
             i.material-icons shopping_cart
-            span.cart-numbers=sum
+            span.cart-numbers=summ
             span
                 i.material-icons face
             span Login
         .container
             block content
-script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous")
-script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js' integrity='sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI' crossorigin='anonymous')
